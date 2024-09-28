@@ -47,7 +47,7 @@ export const ScrollProvider = ({ children, wrapper }) => {
             duration: 0.7,
             lerp: 0.1,
             smoothWheel: true,
-            wheelMultiplier: 2,
+            wheelMultiplier: 0.7,
           },
         });
       })();
