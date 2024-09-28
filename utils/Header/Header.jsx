@@ -1,49 +1,45 @@
-import Link from "next/link"
-import { Logo } from "../Logo/Logo"
+import Link from "next/link";
+import { Logo } from "../Logo/Logo";
 import styles from "./Header.module.scss";
+import { usePathname } from "next/navigation";
+import classNames from "classnames";
 
 const linksList = [
   {
-    "name": "Home",
-    "link": "/",
-    "isAnchor": false
+    name: "Home",
+    link: "/",
   },
   {
-    "name": "Clement",
-    "link": "#clement",
-    "isAnchor": true,
-    "page": "/"
+    name: "Work",
+    link: "/work",
   },
   {
-    "name": "FAQ",
-    "link": "/faq",
-    "isAnchor": false
+    name: "Contact",
+    link: "/contact",
   },
-  {
-    "name": "Medium",
-    "link": "blog",
-    "isAnchor": false
-  }
-]
+];
 
 const Header = () => {
+  const pathname = usePathname();
+
   return (
     <header className={styles.header}>
-    <Logo className="header__logo" />
-
-    <div className="header__wrapper">
-      <ul className="header__list-links">
+      <ul className={styles.header__list_links}>
         {linksList.map((currLink, index) => (
-          <li key={`header_link_${index}`}>            
-            <Link className="header__link" href={currLink.link}>
+          <li key={`header_link_${index}`}>
+            <Link
+              className={classNames(styles.header__link, {
+                "shadow": pathname === currLink.link
+              })}
+              href={currLink.link}
+            >
               <span>{currLink.name}</span>
             </Link>
           </li>
         ))}
       </ul>
-    </div>
-  </header>
-  )
-}
+    </header>
+  );
+};
 
-export default Header
+export default Header;

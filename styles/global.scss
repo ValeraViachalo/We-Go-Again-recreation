@@ -5,9 +5,11 @@
 
 .body {
   @extend %body-text;
-  color: $c-black;
+  color: $c-white;
+  background-color: $c-black;
   overflow-x: hidden;
   opacity: 1;
+
   &::selection {
     color: #5f00f9;
     background: #6929ff1b;
@@ -26,7 +28,7 @@
 }
 
 .shadow {
-  color: $g-70;
+  color: $g-100;
 }
 
 .main {

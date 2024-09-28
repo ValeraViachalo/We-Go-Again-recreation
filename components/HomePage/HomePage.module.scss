@@ -1,0 +1,23 @@
+.home {
+  &_image {
+    width: VW(260);
+    height: VW(380);
+    background-color: red;
+    display: block;
+
+    &_scroll {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+      bottom: 0;
+      overflow: auto;
+    }
+
+    &_wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: VW(40);
+    } 
+  }
+}

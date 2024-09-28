@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "classnames": "^2.5.1",
     "framer-motion": "^11.8.0",
+    "locomotive-scroll": "^5.0.0-beta.11",
     "next": "14.2.13",
     "react": "^18",
     "react-dom": "^18",

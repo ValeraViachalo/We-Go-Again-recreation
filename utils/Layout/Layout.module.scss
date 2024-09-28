@@ -1,0 +1,18 @@
+.layout {
+  display: flex;
+
+  &_elements {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    padding: VW(16);
+    width: VW(400);
+  }
+
+  .page {
+    margin-left: VW(500);
+  }
+}
