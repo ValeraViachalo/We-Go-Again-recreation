@@ -43,7 +43,7 @@ export const ScrollProvider = ({ children, wrapper }) => {
         const LocomotiveScroll = (await import("locomotive-scroll")).default;
         locomotiveScroll.current = new LocomotiveScroll({
           lenisOptions: {
-            wrapper:  document.querySelector("#home-scroll"), 
+            wrapper: wrapper ? document.querySelector(wrapper) : window, 
             duration: 0.7,
             lerp: 0.1,
             smoothWheel: true,
