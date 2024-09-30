@@ -48,6 +48,7 @@ export const ScrollProvider = ({ children, wrapper }) => {
             lerp: 0.1,
             smoothWheel: true,
             wheelMultiplier: 0.7,
+            infinite: true,
           },
         });
       })();
