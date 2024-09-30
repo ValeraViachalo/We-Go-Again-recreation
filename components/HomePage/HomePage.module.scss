@@ -4,7 +4,7 @@
     display: block;
     width: VW(300);
     height: VW(420);
-    
+
     @include forMobile {
       width: 40vw;
       height: 50vw;
@@ -26,8 +26,30 @@
       margin-top: VW(80);
     }
   }
+
   .infine_scroll_wrapper {
     height: calc(100vh - VW(80));
     overflow: clip;
+  }
+
+  &_names {
+    display: flex;
+    flex-direction: column;
+    gap: VW(6);
+    text-align: end;
+    
+    &_wrapper {
+      overflow: clip;
+      position: fixed;
+      top: 0;
+      right: VW(10);
+      bottom: 0;
+      display: flex;
+      height: VW(223);
+      margin: auto 0;
+    }
+
+    &_visible {
+    }
   }
 }
