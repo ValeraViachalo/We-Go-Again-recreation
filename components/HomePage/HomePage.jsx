@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
+import s from "./HomePage.module.scss";
 import Image from "next/image";
 import { useInView } from "framer-motion";
 import content from "./home.json";
 import styles from "./HomePage.module.scss";
+import { motion } from "framer-motion";
 
 export default function HomePage() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -86,6 +88,22 @@ export default function HomePage() {
             ))}
           </div>
         </div>
+      </div>
+      <div className={s.home_names_wrapper}>
+        <motion.li className={s.home_names} style={{ y }}>
+          {content.works.map((currI, i) => (
+            <h1 key={i}>{currI.title}</h1>
+          ))}
+          {content.works.map((currI, i) => (
+            <h1 key={i}>{currI.title}</h1>
+          ))}
+          {content.works.slice(-5).map((currI, i) => (
+            <h1 key={i}>{currI.title}</h1>
+          ))}
+        </motion.li>
+        <span className={s.home_names_visible}>
+          <span className={s.home_names_active}></span>
+        </span>
       </div>
     </div>
   );
