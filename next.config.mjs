@@ -1,6 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.beta.cosmos.so',
+        port: '',
+        // pathname: '/account123/**',
+      },
+    ],
+  },
   sassOptions: {
     includePaths: ['styles'],
     prependData: `

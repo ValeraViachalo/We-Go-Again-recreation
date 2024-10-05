@@ -1,9 +1,15 @@
 .home {
   &_image {
-    width: VW(260);
-    height: VW(380);
     background-color: red;
     display: block;
+    width: VW(300);
+    height: VW(420);
+    transition: all 0.3s ease;
+
+    @include forMobile {
+      width: 40vw;
+      height: 50vw;
+    }
 
     &_scroll {
       position: absolute;
@@ -17,7 +23,17 @@
     &_wrapper {
       display: flex;
       flex-direction: column;
-      gap: VW(40);
+      gap: VW(80);
+      margin-top: VW(80);
+    }
+
+    &_active {
+      width: VW(490);
+      height: VW(700);
     } 
+  }
+  .infine_scroll_wrapper {
+    height: calc(100vh - VW(80));
+    overflow: clip;
   }
 }

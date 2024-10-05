@@ -1,0 +1,39 @@
+{
+  "works": [
+    {
+      "image": "/images/Home/Projects/botb-for-website.webp",
+      "title": "Origin Stories: Tyson Fury",
+      "slug": "origins-tyson-fury"
+    },
+    {
+      "image": "/images/Home/Projects/last-man-standing-poster.webp",
+      "title": "Last Man Standing",
+      "slug": "last-man-standing"
+    },
+    {
+      "image": "/images/Home/Projects/prove-them-wrong-poster.webp",
+      "title": "Prove Them Wrong",
+      "slug": "prove-them-wrong-francis-ngannou"
+    },
+    {
+      "image": "/images/Home/Projects/origin-stories-francis-ngannou.webp",
+      "title": "Origin Stories: Francis Ngannou",
+      "slug": "origin-stories-francis-ngannou"
+    },
+    {
+      "image": "/images/Home/Projects/originals-poster.webp",
+      "title": "You Can't Beat An Original",
+      "slug": "nothing-beats-an-original"
+    },
+    {
+      "image": "/images/Home/Projects/riyadh-season-football-cup-poster.webp",
+      "title": "Riyadh Season Cup",
+      "slug": "iyadh-season-football-cup"
+    },
+    {
+      "image": "/images/Home/Projects/limitations-poster.webp",
+      "title": "Limitations",
+      "slug": "limitations-queensberry"
+    }
+  ]
+}
