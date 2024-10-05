@@ -25,6 +25,11 @@
       gap: VW(80);
       margin-top: VW(80);
     }
+
+    &_active {
+      width: VW(490);
+      height: VW(700);
+    } 
   }
 
   .infine_scroll_wrapper {

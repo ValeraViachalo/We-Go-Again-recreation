@@ -1,52 +1,96 @@
+import React, { useState, useRef, useEffect } from "react";
 import s from "./HomePage.module.scss";
 import Image from "next/image";
+import { useInView } from "framer-motion";
 import content from "./home.json";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import styles from "./HomePage.module.scss";
+import { motion } from "framer-motion";
 
 export default function HomePage() {
-  const worksRef = useRef();
+  const [activeIndex, setActiveIndex] = useState(0);
+  const scrollRef = useRef(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
 
-  const { scrollYProgress } = useScroll({
-    target: worksRef.current,
-    offset: ["0% 0%", "100% 100%"],
-    layoutEffect: false,
-  });
+  const ImageComponent = ({ src, alt, index }) => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { amount: 0.5 });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);
+    useEffect(() => {
+      if (isInView) {
+        setActiveIndex((index - 1) % content.works.length);
+      }
+    }, [isInView, index]);
+
+    return (
+      <div ref={ref}>
+        <Image
+          src={src}
+          width={300}
+          height={400}
+          alt={alt}
+        />
+      </div>
+    );
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (scrollRef.current) {
+        const { scrollTop, scrollHeight, clientHeight } = scrollRef.current;
+        setScrollPosition(scrollTop);
+
+        if (scrollTop + clientHeight >= scrollHeight - 1) {
+          scrollRef.current.scrollTop = 1;
+        } else if (scrollTop <= 0) {
+          scrollRef.current.scrollTop = scrollHeight - clientHeight - 1;
+        }
+      }
+    };
+
+    const scrollContainer = scrollRef.current;
+    if (scrollContainer) {
+      scrollContainer.addEventListener("scroll", handleScroll);
+    }
+
+    return () => {
+      if (scrollContainer) {
+        scrollContainer.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, []);
 
   return (
-    <div className={s.home} ref={worksRef}>
-      <div className={s.home_image_scroll} id="home-scroll">
-        <div className={s.home_image_wrapper}>
+    <div className={styles.home}>
+      <div
+        className={styles.home_image_scroll}
+        id="home-scroll"
+        ref={scrollRef}
+      >
+        <div className={styles.home_image_wrapper}>
           {content.works.map((currI, i) => (
-            <Image
-              src={currI.image}
-              className={s.home_image}
+            <ImageComponent
               key={`image_${i}`}
-              width={300}
-              height={400}
+              src={currI.image}
               alt={currI.title}
+              index={i}
             />
           ))}
         </div>
-        <div className={s.infine_scroll_wrapper}>
-          <div className={`${s.home_image_wrapper}`}>
+        <div className={styles.infine_scroll_wrapper}>
+          <div className={styles.home_image_wrapper}>
             {content.works.map((currI, i) => (
-              <Image
+              <ImageComponent
+                key={`image_clone_${i}`}
                 src={currI.image}
-                className={s.home_image}
-                key={`image_${i}`}
-                width={300}
-                height={400}
                 alt={currI.title}
+                index={i + content.works.length}
               />
             ))}
           </div>
         </div>
       </div>
       <div className={s.home_names_wrapper}>
-        <motion.li className={s.home_names} style={{ y }}>
+        <motion.li className={s.home_names}>
           {content.works.map((currI, i) => (
             <h1 key={i}>{currI.title}</h1>
           ))}
