@@ -90,7 +90,7 @@ export default function HomePage() {
         </div>
       </div>
       <div className={s.home_names_wrapper}>
-        <motion.li className={s.home_names} style={{ y }}>
+        <motion.li className={s.home_names}>
           {content.works.map((currI, i) => (
             <h1 key={i}>{currI.title}</h1>
           ))}
