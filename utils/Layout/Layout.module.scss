@@ -1,5 +1,6 @@
 .layout {
   display: flex;
+  position: relative;
 
   &_elements {
     display: flex;
@@ -9,10 +10,23 @@
     top: 0;
     bottom: 0;
     padding: VW(16);
-    width: VW(400);
+    width: VW(630);
+    p {
+      width: VW(400);
+    }
   }
 
   .page {
-    margin-left: VW(500);
+    margin-left: VW(660);
+  }
+
+  .line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: $g-90;
+    opacity: .3;
+    width: 1px;
   }
 }

@@ -1,13 +1,19 @@
 .home {
   &_image {
-    background-color: red;
     display: block;
+    position: relative;
+    overflow: hidden;
     width: VW(300);
     height: VW(420);
+    transition: all .25s $Ease1;
 
     @include forMobile {
       width: 40vw;
       height: 50vw;
+    }
+
+    @include hover {
+      scale: 1.1;
     }
 
     &_scroll {
@@ -16,7 +22,6 @@
       transform: translateX(-50%);
       top: 0;
       bottom: 0;
-      // overflow: auto;
     }
 
     &_wrapper {
@@ -29,32 +34,11 @@
     &_active {
       width: VW(490);
       height: VW(700);
-    } 
+    }
   }
 
   .infine_scroll_wrapper {
     height: calc(100vh - VW(80));
-    overflow: clip;
-  }
-
-  &_names {
-    display: flex;
-    flex-direction: column;
-    gap: VW(6);
-    text-align: end;
-    
-    &_wrapper {
-      overflow: clip;
-      position: fixed;
-      top: 0;
-      right: VW(10);
-      bottom: 0;
-      display: flex;
-      height: VW(223);
-      margin: auto 0;
-    }
-
-    &_visible {
-    }
+    overflow-y: clip;
   }
 }

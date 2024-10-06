@@ -1,0 +1,29 @@
+.work_details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: VW(16);
+  height: 96.7vh;
+
+  .top {
+    display: flex;
+    flex-direction: column;
+    gap: VW(15);
+    
+    .paragraph {
+      width: VW(530);
+    }
+  }
+
+  .video {
+    &_preview {
+      width: 100%;
+      height: 100%;
+      &_wrapper {
+        overflow: clip;
+        width: VW(930);
+        height: VW(530);
+      }
+    }
+  }
+}

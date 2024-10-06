@@ -1,37 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
-import s from "./HomePage.module.scss";
 import Image from "next/image";
 import { useInView } from "framer-motion";
-import content from "./home.json";
-import styles from "./HomePage.module.scss";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import styles from "./HomePage.module.scss";
+import content from "./home.json";
 
 export default function HomePage() {
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollRef = useRef(null);
   const [scrollPosition, setScrollPosition] = useState(0);
-
-  const ImageComponent = ({ src, alt, index }) => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { amount: 0.5 });
-
-    useEffect(() => {
-      if (isInView) {
-        setActiveIndex((index - 1) % content.works.length);
-      }
-    }, [isInView, index]);
-
-    return (
-      <div ref={ref}>
-        <Image
-          src={src}
-          width={300}
-          height={400}
-          alt={alt}
-        />
-      </div>
-    );
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -67,44 +45,33 @@ export default function HomePage() {
         ref={scrollRef}
       >
         <div className={styles.home_image_wrapper}>
-          {content.works.map((currI, i) => (
+          {content.works.map((project, i) => (
             <ImageComponent
               key={`image_${i}`}
-              src={currI.image}
-              alt={currI.title}
+              project={project}
               index={i}
+              setActiveIndex={setActiveIndex}
             />
           ))}
         </div>
         <div className={styles.infine_scroll_wrapper}>
           <div className={styles.home_image_wrapper}>
-            {content.works.map((currI, i) => (
-              <ImageComponent
-                key={`image_clone_${i}`}
-                src={currI.image}
-                alt={currI.title}
-                index={i + content.works.length}
-              />
+            {content.works.map((project, i) => (
+              <ImageComponent key={`image_clone_${i}`} project={project} />
             ))}
           </div>
         </div>
       </div>
-      <div className={s.home_names_wrapper}>
-        <motion.li className={s.home_names}>
-          {content.works.map((currI, i) => (
-            <h1 key={i}>{currI.title}</h1>
-          ))}
-          {content.works.map((currI, i) => (
-            <h1 key={i}>{currI.title}</h1>
-          ))}
-          {content.works.slice(-5).map((currI, i) => (
-            <h1 key={i}>{currI.title}</h1>
-          ))}
-        </motion.li>
-        <span className={s.home_names_visible}>
-          <span className={s.home_names_active}></span>
-        </span>
-      </div>
     </div>
   );
 }
+
+const ImageComponent = ({ project }) => {
+  const { image, title, slug } = project;
+
+  return (
+    <Link href={`/work/${slug}`} className={styles.home_image}>
+      <Image src={image} fill alt={title} />
+    </Link>
+  );
+};

@@ -1,0 +1,24 @@
+{
+  "title": "Battle of the Baddest",
+  "descrition": "From the buildup through fight night, this all‑access doc chronicles the boxing showdown between WBC champion Tyson Fury and MMA legend Francis Ngannou.",
+  "credits": [
+    {
+      "role": "Director",
+      "name": "Tom Day"
+    },
+    {
+      "role": "Cinematographer",
+      "name": "Arthur Lok"
+    },
+    {
+      "role": "Editor",
+      "name": "Jack Cantrell"
+    },
+    {
+      "role": "Composer",
+      "name": "Tommy Evans"
+    }
+  ],
+  "preview": "/videos/origins-tyson-fury-preview.mp4",
+  "video": "/videos/origins-tyson-fury.mp4"
+}
