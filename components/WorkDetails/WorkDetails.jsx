@@ -6,16 +6,10 @@ import { anim, WorksPageTrasition } from "@/lib/helpers/anim";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 
-const pageVariants = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -20 },
-};
-
 const pageTransition = {
   type: "tween",
   ease: "anticipate",
-  duration: 0 ,
+  duration: 0,
 };
 
 export default function WorkDetailsPage() {
@@ -34,20 +28,13 @@ export default function WorkDetailsPage() {
         <motion.h1 variants={WorksPageTrasition.textPresence} custom={0}>
           {data.title}
         </motion.h1>
-        <SplitText
-          LineWrapper={({ lineIndex, children }) => (
-            <motion.p
-              className="wrapper shadow"
-              variants={WorksPageTrasition.textPresence}
-              custom={lineIndex + 1}
-            >
-              {children}
-            </motion.p>
-          )}
-          className={s.paragraph}
+        <motion.p
+          className={"wrapper shadow " + s.paragraph}
+          variants={WorksPageTrasition.textPresence}
+          custom={1}
         >
           {data.descrition}
-        </SplitText>
+        </motion.p>
         <div className="shadow">
           <motion.p variants={WorksPageTrasition.textPresence} custom={2}>
             Credits:
@@ -68,8 +55,9 @@ export default function WorkDetailsPage() {
       <motion.div
         variants={WorksPageTrasition.videoWrapperPresence}
         className={s.video_preview_wrapper}
-      >
-        <video
+        >
+        <motion.video
+          variants={WorksPageTrasition.videoPresence}
           loop
           muted
           autoPlay
@@ -78,7 +66,23 @@ export default function WorkDetailsPage() {
           className={s.video_preview}
         >
           <source src={data.preview} />
-        </video>
+        </motion.video>
+      </motion.div>
+      <motion.div
+        variants={WorksPageTrasition.background}
+        className={s.background_wrapper}
+        >
+        <motion.video
+          // variants={WorksPageTrasition.videoPresence}
+          loop
+          muted
+          autoPlay
+          webkit-playsinline="true"
+          playsInline
+          className={s.background}
+        >
+          <source src={data.preview} />
+        </motion.video>
       </motion.div>
     </motion.main>
   );

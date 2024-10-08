@@ -26,7 +26,39 @@
     bottom: 0;
     right: 0;
     background-color: $g-90;
-    opacity: .3;
+    opacity: 0.3;
     width: 1px;
+  }
+
+  .works_list {
+    position: fixed;
+    right: 0;
+    height: 100dvh;
+    overflow: scroll;
+    
+    padding: VW(16);
+    border-left: 0.1vw solid #c0c0c030;
+    
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    
+    &_scroll {
+      // overflow: scroll;
+      height: min-content;
+
+      display: flex;
+      flex-direction: column;
+      gap: VW(16);
+
+      
+    }
+
+    &_image {
+      width: VW(80);
+      height: VW(110);
+      display: block;
+      position: relative;
+    }
   }
 }

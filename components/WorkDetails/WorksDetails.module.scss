@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding: VW(16);
-  height: 96.7vh;
+  height: 95vh;
 
   .top {
     display: flex;
@@ -24,6 +24,16 @@
         width: VW(930);
         height: VW(530);
       }
+    }
+  }
+
+  .background {
+    &_wrapper {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      filter: blur(10vw);
+      opacity: .5;
     }
   }
 }

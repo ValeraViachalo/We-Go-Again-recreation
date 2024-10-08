@@ -12,6 +12,6 @@ export default function WorkDetails() {
       <DataProvider key={pathname} url={`/preparedData/${pathname}.json`}>
         <WorkDetailsPage />
       </DataProvider>
-    </AnimatePresence>
+    </AnimatePresence> 
   );
 }
