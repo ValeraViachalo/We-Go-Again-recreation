@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { DataContext } from "@/lib/Providers/DataProvider/DataProvider";
 import s from "./WorksDetails.module.scss";
 import { SplitText } from "@cyriacbr/react-split-text";
 import { anim, WorksPageTrasition } from "@/lib/helpers/anim";
@@ -19,7 +18,6 @@ const pageTransition = {
 };
 
 export default function WorkDetailsPage() {
-  const { data } = useContext(DataContext);
   const pathname = usePathname();
   return (
     <motion.main

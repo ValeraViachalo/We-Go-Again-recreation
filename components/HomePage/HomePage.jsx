@@ -1,15 +1,14 @@
-import React, { useState, useRef, useEffect } from "react";
-import Image from "next/image";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { useInView } from "framer-motion";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import styles from "./HomePage.module.scss";
 import content from "./home.json";
+import { ImageComponent } from "@/utils/ImageComponent";
 
-export default function HomePage() {
+export default function HomePage({ data }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollRef = useRef(null);
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const [scrollPosition, setScrollPosition] = useState(0);  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,19 +44,20 @@ export default function HomePage() {
         ref={scrollRef}
       >
         <div className={styles.home_image_wrapper}>
-          {content.works.map((project, i) => (
+          {data?.works?.map((project, i) => (
             <ImageComponent
               key={`image_${i}`}
               project={project}
               index={i}
               setActiveIndex={setActiveIndex}
+              styles={styles.home_image}
             />
           ))}
         </div>
         <div className={styles.infine_scroll_wrapper}>
           <div className={styles.home_image_wrapper}>
-            {content.works.map((project, i) => (
-              <ImageComponent key={`image_clone_${i}`} project={project} />
+            {data?.works?.map((project, i) => (
+              <ImageComponent key={`image_clone_${i}`} project={project} styles={styles.home_image}/>
             ))}
           </div>
         </div>
@@ -66,12 +66,4 @@ export default function HomePage() {
   );
 }
 
-const ImageComponent = ({ project }) => {
-  const { image, title, slug } = project;
 
-  return (
-    <Link href={`/work/${slug}`} className={styles.home_image}>
-      <Image src={image} fill alt={title} />
-    </Link>
-  );
-};

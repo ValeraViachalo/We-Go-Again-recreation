@@ -1,10 +1,7 @@
-import { useContext } from "react";
-import { DataContext } from "@/lib/Providers/DataProvider/DataProvider";
 import s from "./WorksDetails.module.scss";
-import { SplitText } from "@cyriacbr/react-split-text";
 import { anim, WorksPageTrasition } from "@/lib/helpers/anim";
 import { motion } from "framer-motion";
-import { usePathname } from "next/navigation";
+import MuxPlayer from "yt";
 
 const pageTransition = {
   type: "tween",
@@ -12,10 +9,7 @@ const pageTransition = {
   duration: 0,
 };
 
-export default function WorkDetailsPage() {
-  const { data } = useContext(DataContext);
-  const pathname = usePathname();
-
+export default function WorkDetailsPage({ data }) {
   return (
     <motion.main
       className={s.work_details}
@@ -26,7 +20,7 @@ export default function WorkDetailsPage() {
     >
       <motion.div className={s.top}>
         <motion.h1 variants={WorksPageTrasition.textPresence} custom={0}>
-          {data.title}
+          {data.name}
         </motion.h1>
         <motion.p
           className={"wrapper shadow " + s.paragraph}
@@ -55,8 +49,8 @@ export default function WorkDetailsPage() {
       <motion.div
         variants={WorksPageTrasition.videoWrapperPresence}
         className={s.video_preview_wrapper}
-        >
-        <motion.video
+      >
+        {/* <motion.video
           variants={WorksPageTrasition.videoPresence}
           loop
           muted
@@ -66,12 +60,20 @@ export default function WorkDetailsPage() {
           className={s.video_preview}
         >
           <source src={data.preview} />
-        </motion.video>
+        </motion.video> */}
+        <MuxPlayer
+          playbackId={data.video.playbackId}
+          metadata={{
+            video_id: "video-id-54321",
+            video_title: "Test video title",
+            viewer_user_id: "user-id-007",
+          }}
+        />
       </motion.div>
       <motion.div
         variants={WorksPageTrasition.background}
         className={s.background_wrapper}
-        >
+      >
         <motion.video
           // variants={WorksPageTrasition.videoPresence}
           loop
@@ -81,7 +83,7 @@ export default function WorkDetailsPage() {
           playsInline
           className={s.background}
         >
-          <source src={data.preview} />
+          {/* <source src={data.preview} /> */}
         </motion.video>
       </motion.div>
     </motion.main>

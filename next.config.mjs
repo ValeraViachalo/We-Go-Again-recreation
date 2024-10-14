@@ -10,6 +10,7 @@ const nextConfig = {
         // pathname: '/account123/**',
       },
     ],
+    domains: ["cdn.sanity.io"]
   },
   sassOptions: {
     includePaths: ['styles'],
