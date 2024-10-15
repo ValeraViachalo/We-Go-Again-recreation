@@ -4,7 +4,10 @@ import { sanityClient } from "@/sanity";
 const query = groq`
     *[_type == "mainPage"][0] {
         ...,
-        works[]->,
+        works[]->{
+            ...,
+            "previewUrl": video.preview.asset->url
+        }
     }
 `;
 

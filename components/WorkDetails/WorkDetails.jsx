@@ -1,7 +1,6 @@
 import s from "./WorksDetails.module.scss";
-import { anim, WorksPageTrasition } from "@/lib/helpers/anim";
+import { WorksPageTrasition } from "@/lib/helpers/anim";
 import { motion } from "framer-motion";
-import MuxPlayer from "yt";
 
 const pageTransition = {
   type: "tween",
@@ -27,7 +26,7 @@ export default function WorkDetailsPage({ data }) {
           variants={WorksPageTrasition.textPresence}
           custom={1}
         >
-          {data.descrition}
+          {data.description}
         </motion.p>
         <div className="shadow">
           <motion.p variants={WorksPageTrasition.textPresence} custom={2}>
@@ -50,7 +49,7 @@ export default function WorkDetailsPage({ data }) {
         variants={WorksPageTrasition.videoWrapperPresence}
         className={s.video_preview_wrapper}
       >
-        {/* <motion.video
+        <motion.video
           variants={WorksPageTrasition.videoPresence}
           loop
           muted
@@ -59,16 +58,8 @@ export default function WorkDetailsPage({ data }) {
           playsInline
           className={s.video_preview}
         >
-          <source src={data.preview} />
-        </motion.video> */}
-        <MuxPlayer
-          playbackId={data.video.playbackId}
-          metadata={{
-            video_id: "video-id-54321",
-            video_title: "Test video title",
-            viewer_user_id: "user-id-007",
-          }}
-        />
+          <source src={data.previewUrl} />
+        </motion.video>
       </motion.div>
       <motion.div
         variants={WorksPageTrasition.background}
@@ -83,7 +74,7 @@ export default function WorkDetailsPage({ data }) {
           playsInline
           className={s.background}
         >
-          {/* <source src={data.preview} /> */}
+          <source src={data.previewUrl} />
         </motion.video>
       </motion.div>
     </motion.main>

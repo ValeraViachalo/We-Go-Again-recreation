@@ -2,7 +2,7 @@ import { groq } from "next-sanity";
 import { sanityClient } from "@/sanity";
 
 const query = groq`
-    *[_type == "work" && slug.current == $slug][0] {
+      *[_type == "work" && slug.current == $slug][0] {
         ...,
         credits[]->,
         catergory[]->,
@@ -12,7 +12,9 @@ const query = groq`
             assetId,
             filename,
             }
-        }
+        },
+        "videoUrl": video.video.asset->url,
+        "previewUrl": video.preview.asset->url,
     }
 `;
 
