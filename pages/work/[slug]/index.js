@@ -1,12 +1,14 @@
 import WorkDetailsPage from "@/components/WorkDetails/WorkDetails";
 import { AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 export default function WorkDetails({ data }) {
+  const pathname = usePathname();
   return (
-    <AnimatePresence mode="wait">
-      <WorkDetailsPage data={data.work}/>
-    </AnimatePresence>
+      <AnimatePresence mode="wait">
+        <WorkDetailsPage data={data?.work} key={pathname} />
+      </AnimatePresence>
   );
 }
 

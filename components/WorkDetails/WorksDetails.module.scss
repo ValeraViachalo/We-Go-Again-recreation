@@ -25,9 +25,42 @@
         height: VW(530);
       }
     }
+
+    &_main {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 100;
+      transform-origin: center;
+      width: VW(1280);
+      height: VW(720);
+      // inset: 10vw;
+
+      &_wrapper {
+        inset: 0;
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &_bg {
+        position: absolute;
+        inset: 0;
+        // background-color: #0000008c;
+        z-index: 1;
+        display: block;
+        transition: all .3s ease;
+        @include hover {
+          // background-color: #000000be;
+        }
+      }
+    }
   }
 
   .background {
+    width: 100%;
+    height: 100%;
     &_wrapper {
       position: fixed;
       inset: 0;
