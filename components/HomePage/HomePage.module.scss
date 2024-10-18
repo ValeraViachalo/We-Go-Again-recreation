@@ -32,13 +32,28 @@
     }
 
     &_active {
-      width: VW(490);
-      height: VW(700);
+      // width: VW(490);
+      // height: VW(700);
+      // outline: 10px solid red;
     }
   }
 
   .infine_scroll_wrapper {
     height: calc(100vh - VW(80));
     overflow-y: clip;
+  }
+
+  &_background {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+
+    &_wrapper {
+      position: fixed;
+      top: 0;
+      transform: translateX(-40vw);
+      z-index: -10;
+      filter: blur(0vw);
+    }
   }
 }

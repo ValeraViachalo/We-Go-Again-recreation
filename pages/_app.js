@@ -7,8 +7,6 @@ import { QueryClient, QueryClientProvider } from "react-query";
 const queryC = new QueryClient();
 
 export default function App({ Component, pageProps, router, data }) {
-  console.log(data);
-  
   return (
     <>
       <Head>

@@ -6,7 +6,7 @@ const query = groq`
         ...,
         works[]->{
             ...,
-            "previewUrl": video.preview.asset->url,
+            "backgroundUrl": video.background.asset->url,
         }
     }
 `;

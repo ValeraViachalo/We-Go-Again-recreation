@@ -15,12 +15,11 @@
     background: #6929ff1b;
     mix-blend-mode: difference;
   }
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
-
-
-// ::-webkit-scrollbar {
-//   display: none;
-// }
 
 .container {
   padding-right: 4vw;

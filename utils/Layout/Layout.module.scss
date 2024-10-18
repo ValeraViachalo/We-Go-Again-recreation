@@ -9,6 +9,7 @@
     position: fixed;
     top: 0;
     bottom: 0;
+    z-index: 1000;
     padding: VW(16);
     width: VW(630);
     p {
@@ -59,6 +60,17 @@
       height: VW(110);
       display: block;
       position: relative;
+
+      filter: brightness(0.5);
+      transition: filter .3s ease;
+      
+      @include hover {
+        filter: brightness(1);
+      }
+
+      &_active {
+        filter: brightness(1);
+      }
     }
   }
 }

@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ScrollProvider } from "@/lib/Providers/ScrollProvider/ScrollProvider";
 import { urlFor } from "@/sanity";
+import clsx from "clsx";
 
 export default function Layout({ children, data }) {
   const pathname = usePathname();
@@ -40,12 +41,10 @@ export default function Layout({ children, data }) {
 
 const WorkList = () => {
   const [works, setWorks] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const fetchWorks = async () => {
-      setIsLoading(true);
       try {
         const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/getMainPageData`;
         console.log('Fetching from URL:', apiUrl);
@@ -61,13 +60,9 @@ const WorkList = () => {
           setWorks(data.mainPage.works);
         } else {
           console.error('Unexpected data structure:', data.mainPage.works);
-          setError('Unexpected data structure');
         }
       } catch (error) {
         console.error('Error fetching works:', error);
-        setError(error.message);
-      } finally {
-        setIsLoading(false);
       }
     };
 
@@ -81,7 +76,9 @@ const WorkList = () => {
           {works.map((project, i) => (
             <Link
               href={`/work/${project.slug.current}`}
-              className={styles.works_list_image}
+              className={clsx(styles.works_list_image, {
+                [styles.works_list_image_active]: pathname ===  `/work/${project.slug.current}`
+              })}
               key={i}
             >
               <Image src={urlFor(project.image).url()} fill alt={project.title} />
